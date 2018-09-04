@@ -42,6 +42,8 @@ gem 'rails-ujs', '~> 0.1.0'
 # password暗号化
 gem 'bcrypt'
 
+gem "font-awesome-rails"
+
 # 画像投稿
 gem "carrierwave"
 

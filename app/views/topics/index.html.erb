@@ -15,7 +15,7 @@
             <% end %>
 
               <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
-              <h4>コメント</h4>
+              <h4 class="comment-txt">コメント</h4>
             <% topic.comments.each do |comment| %>
               <% unless comment.body == nil %>
               <p class="topic-text">
@@ -26,14 +26,20 @@
 
             <!-- コメント投稿 -->
             <%= form_for ([topic, topic.comments.build]) do |f| %>
-            <div class="field">
-              <%= f.text_area :body, cols: 20, rows: 2, class: "form-control" %>
-            </div><br/>
-              <%= f.submit "コメントする", class: "btn btn-primary" %>
+            <div>
+              <%= f.text_field :body, cols: 10, rows: 1, id: "id_of_textarea", class: "form-control comment-input-area" %>
             <% end %>
-          </div>
+            </div>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+
+<script>
+// $('#id_of_textarea').keypress(function(e){
+//       if(e.which == 13){
+//            $(this).closest('form').submit();
+//        }
+//     });
+</script>
