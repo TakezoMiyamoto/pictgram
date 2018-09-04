@@ -13,10 +13,24 @@
                 <%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %>
               <% end %>
             <% end %>
-            <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
-            <p class="topic-text">
-              <%= topic.description %>
-            </p>
+
+              <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
+              <h4>コメント</h4>
+            <% topic.comments.each do |comment| %>
+              <% unless comment.body == nil %>
+              <p class="topic-text">
+                <%= comment.body %>
+              </p>
+              <% end %>
+            <% end %>
+
+            <!-- コメント投稿 -->
+            <%= form_for ([topic, topic.comments.build]) do |f| %>
+            <div class="field">
+              <%= f.text_area :body, cols: 20, rows: 2, class: "form-control" %>
+            </div><br/>
+              <%= f.submit "コメントする", class: "btn btn-primary" %>
+            <% end %>
           </div>
         </div>
       </div>
